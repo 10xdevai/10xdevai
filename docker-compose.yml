@@ -1,3 +1,4 @@
+
 version: '3.8'
 
 services:
@@ -9,6 +10,7 @@ services:
     ports:
       - "4001:4000"
     command: >
-      sh -c "bundle install && bundle exec jekyll serve --watch --drafts --host 0.0.0.0"
+      sh -c "bundle install &&
+             bundle exec jekyll serve -s docs --watch --drafts --livereload --host 0.0.0.0"
     stdin_open: true
     tty: true

@@ -1,0 +1,15 @@
+
+# Serve the site from the docs/ directory
+source: docs
+
+# Optional basic metadata (safe for GH Pages)
+title: 10xDevAi
+description: Bridge browser LLM chats with your local file system.
+
+# Keep root dev files out of the build output
+exclude:
+  - docker-compose.yml
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
