@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>10xDevAi • Close the gap between browser LLM & local FS</title>
+  <meta name="description" content="10xDevAi bridges browser-based LLM chat and your local file system: insert files as context, compare & save results, mask secrets, and use prompt snippets.">
+  <link rel="icon" href="data:,">
+  <!-- Tailwind CDN (for static GH Pages) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            vscode: {
+              bg: '#0f172a',       // slate-900-ish
+              panel: '#111827',    // gray-900
+              card: '#1f2937',     // gray-800
+              border: '#374151',   // gray-700
+              accent: '#007acc',   // VS Code blue
+              accent2: '#60a5fa'   // softer blue
+            }
+          },
+          boxShadow: {
+            'vscode': '0 10px 25px -10px rgba(0, 122, 204, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Flowbite (for tabs, etc.) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+</head>
+<body class="bg-vscode-bg text-gray-200 antialiased selection:bg-vscode-accent/30">
+  <!-- Top ribbon / header -->
+  <header class="border-b border-vscode-border/40 bg-gradient-to-b from-black/30 to-transparent backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <span class="inline-flex h-9 w-9 items-center justify-center rounded-md bg-vscode-accent/20 ring-1 ring-vscode-accent/50 overflow-hidden">
+          <img src="assets/logo.png" alt="10xdev logo" class="h-9 w-9 object-contain">
+        </span>
+        <span class="font-semibold tracking-wide">10xdev</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#features" class="hover:text-white/90">Features</a>
+        <a href="#install" class="hover:text-white/90">Install</a>
+        <a href="#cli" class="hover:text-white/90">CLI</a>
+        <a class="inline-flex items-center gap-2 rounded-md bg-vscode-accent px-3 py-1.5 text-sm font-medium text-white shadow-vscode hover:bg-vscode-accent/90"
+           href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
+           target="_blank" rel="noopener">
+          Install Chrome Plugin
+          <svg viewBox="0 0 24 24" class="h-4 w-4"><path fill="currentColor" d="M14 3h7v7h-2V6.4l-8.3 8.3-1.4-1.4L17.6 5H14V3ZM5 5h6v2H7v10h10v-4h2v6H5V5Z"/></svg>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative isolate">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_10%,rgba(0,122,204,0.15),transparent)]"></div>
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:py-20">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+        <div>
+          <h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
+            Bridge browser LLM chats to your local files
+          </h1>
+          <p class="mt-5 text-gray-300 leading-relaxed">
+            10xdev closes the gap between cloud LLMs and your file system:
+            insert files into prompts, compare results, save changes,
+            mask secrets, and move faster with predefined prompt snippets.
+          </p>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#install" class="inline-flex items-center justify-center rounded-md bg-vscode-accent px-4 py-2.5 font-medium text-white hover:bg-vscode-accent/90 shadow-vscode">
+              Get Started
+            </a>
+            <a href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
+               target="_blank" rel="noopener"
+               class="inline-flex items-center justify-center rounded-md border border-vscode-border/60 bg-vscode-panel px-4 py-2.5 font-medium text-gray-200 hover:bg-vscode-card/60">
+              Install Chrome Plugin
+            </a>
+          </div>
+        </div>
+
+        <div class="rounded-xl border border-vscode-border/60 bg-vscode-panel p-3 shadow-xl">
+          <!-- Demo Video -->
+          <video class="w-full rounded-lg ring-1 ring-vscode-border/60" controls poster="">
+            <source src="assets/10xDev.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="border-t border-vscode-border/40">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <h2 class="text-2xl font-semibold">Product Benefits</h2>
+      <p class="mt-2 text-gray-300">Close the gap between browser-based LLM chat and your local file system.</p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="rounded-xl border border-vscode-border/50 bg-vscode-card p-6">
+          <h3 class="font-semibold">Insert files as context</h3>
+          <p class="mt-2 text-gray-300">Send code, docs, or data directly into prompts for grounded responses.</p>
+        </article>
+
+        <article class="rounded-xl border border-vscode-border/50 bg-vscode-card p-6">
+          <h3 class="font-semibold">Compare & save to FS</h3>
+          <p class="mt-2 text-gray-300">Diff results and write back safely to your working tree.</p>
+        </article>
+
+        <article class="rounded-xl border border-vscode-border/50 bg-vscode-card p-6">
+          <h3 class="font-semibold">Detect & mask secrets</h3>
+          <p class="mt-2 text-gray-300">Keep tokens out of diffs and logs with built-in secret hygiene.</p>
+        </article>
+
+        <article class="rounded-xl border border-vscode-border/50 bg-vscode-card p-6">
+          <h3 class="font-semibold">Prompt snippets</h3>
+          <p class="mt-2 text-gray-300">Pre-define reusable snippets to speed up common flows.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="border-t border-vscode-border/40 bg-gradient-to-b from-transparent to-black/20">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl font-semibold">Installation</h2>
+        <div class="flex items-center gap-4 text-sm">
+          <a class="text-vscode-accent hover:underline" target="_blank" rel="noopener"
+             href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba">Chrome Plugin</a>
+          <span aria-hidden="true" class="text-gray-600">•</span>
+          <a class="text-vscode-accent hover:underline" target="_blank" rel="noopener"
+             href="https://github.com/10xdevai/10xdevai/releases/tag/v0.0.3">CLI v0.0.3</a>
+        </div>
+      </div>
+
+      <!-- Browser Plugin (Chrome) -->
+      <div class="mt-6 rounded-xl border border-vscode-border/50 bg-vscode-panel p-5">
+        <h3 class="text-lg font-semibold">Browser Plugin (Chrome)</h3>
+        <ol class="mt-3 list-decimal pl-5 space-y-3">
+          <li>
+            Open the Chrome Web Store:
+            <a class="text-vscode-accent hover:underline" target="_blank" rel="noopener"
+               href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba">
+              10xDevAi – Chrome Plugin
+            </a>
+          </li>
+          <li>Click <b>Add to Chrome</b> → <b>Add extension</b>.</li>
+          <li>
+            (Optional) <b>Pin the extension</b>: click the puzzle icon in the toolbar, then the pin next to <i>10xDevAi</i>.
+          </li>
+          <li>Click the extension icon and <b>Log in</b>. On first login, you’ll complete <b>email registration & verification</b>.</li>
+          <li>With the plugin active, you can: insert files as context, compare & save results back to FS, and use snippets.</li>
+        </ol>
+      </div>
+
+      <!-- Tabs (CLI) -->
+      <ul class="mt-8 flex flex-wrap text-sm font-medium border-b border-vscode-border/40" id="install-tab" data-tabs-toggle="#install-tab-content" role="tablist">
+        <li class="mr-2" role="presentation">
+          <button class="inline-block rounded-t-lg border-b-2 p-3 aria-selected:border-vscode-accent aria-selected:text-white border-transparent text-gray-300"
+                  id="macos-tab" data-tabs-target="#macos" type="button" role="tab" aria-controls="macos" aria-selected="true">macOS (CLI)</button>
+        </li>
+        <li class="mr-2" role="presentation">
+          <button class="inline-block rounded-t-lg border-b-2 p-3 aria-selected:border-vscode-accent aria-selected:text-white border-transparent text-gray-300"
+                  id="linux-tab" data-tabs-target="#linux" type="button" role="tab" aria-controls="linux" aria-selected="false">Linux (CLI)</button>
+        </li>
+        <li role="presentation">
+          <button class="inline-block rounded-t-lg border-b-2 p-3 aria-selected:border-vscode-accent aria-selected:text-white border-transparent text-gray-300"
+                  id="windows-tab" data-tabs-target="#windows" type="button" role="tab" aria-controls="windows" aria-selected="false">Windows (CLI)</button>
+        </li>
+      </ul>
+
+      <div id="install-tab-content" class="mt-6">
+        <!-- macOS -->
+        <div class="hidden rounded-xl border border-vscode-border/50 bg-vscode-panel p-5" id="macos" role="tabpanel" aria-labelledby="macos-tab">
+          <ol class="list-decimal pl-5 space-y-3">
+            <li>Download: <code class="text-gray-200">tenx-mac</code></li>
+            <li>Install to PATH:
+              <pre class="mt-2 overflow-x-auto rounded-lg border border-vscode-border/50 bg-black/40 p-3 text-sm"><code id="mac-cmd">curl -L -o tenx https://github.com/10xdevai/10xdevai/releases/download/v0.0.3/tenx-mac
+chmod +x tenx
+sudo mv tenx /usr/local/bin/</code></pre>
+              <button data-copy="#mac-cmd" class="copy-btn mt-2 inline-flex items-center gap-2 rounded-md border border-vscode-border/60 bg-vscode-card px-3 py-1.5 text-sm hover:bg-vscode-card/70">Copy</button>
+            </li>
+            <li>Run the server:
+              <pre class="mt-2 overflow-x-auto rounded-lg border border-vscode-border/50 bg-black/40 p-3 text-sm"><code id="mac-run">tenx serve</code></pre>
+              <button data-copy="#mac-run" class="copy-btn mt-2 inline-flex items-center gap-2 rounded-md border border-vscode-border/60 bg-vscode-card px-3 py-1.5 text-sm hover:bg-vscode-card/70">Copy</button>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Linux -->
+        <div class="hidden rounded-xl border border-vscode-border/50 bg-vscode-panel p-5" id="linux" role="tabpanel" aria-labelledby="linux-tab">
+          <ol class="list-decimal pl-5 space-y-3">
+            <li>Download: <code class="text-gray-200">tenx-linux</code></li>
+            <li>Install to PATH:
+              <pre class="mt-2 overflow-x-auto rounded-lg border border-vscode-border/50 bg-black/40 p-3 text-sm"><code id="linux-cmd">curl -L -o tenx https://github.com/10xdevai/10xdevai/releases/download/v0.0.3/tenx-linux
+chmod +x tenx
+sudo mv tenx /usr/local/bin/</code></pre>
+              <button data-copy="#linux-cmd" class="copy-btn mt-2 inline-flex items-center gap-2 rounded-md border border-vscode-border/60 bg-vscode-card px-3 py-1.5 text-sm hover:bg-vscode-card/70">Copy</button>
+            </li>
+            <li>Run the server:
+              <pre class="mt-2 overflow-x-auto rounded-lg border border-vscode-border/50 bg-black/40 p-3 text-sm"><code id="linux-run">tenx serve</code></pre>
+              <button data-copy="#linux-run" class="copy-btn mt-2 inline-flex items-center gap-2 rounded-md border border-vscode-border/60 bg-vscode-card px-3 py-1.5 text-sm hover:bg-vscode-card/70">Copy</button>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Windows -->
+        <div class="hidden rounded-xl border border-vscode-border/50 bg-vscode-panel p-5" id="windows" role="tabpanel" aria-labelledby="windows-tab">
+          <ol class="list-decimal pl-5 space-y-3">
+            <li>
+              Download:
+              <a class="text-vscode-accent hover:underline" target="_blank" rel="noopener"
+                href="https://github.com/10xdevai/10xdevai/releases/download/v0.0.3/tenx.exe">tenx.exe</a>
+            </li>
+            <li>Add the folder containing <code class="text-gray-200">tenx.exe</code> to your <b>PATH</b>.</li>
+            <li>
+              Run the server (PowerShell):
+              <pre class="mt-2 overflow-x-auto rounded-lg border border-vscode-border/50 bg-black/40 p-3 text-sm"><code id="win-run">.\tenx.exe serve</code></pre>
+              <button data-copy="#win-run"
+                      class="copy-btn mt-2 inline-flex items-center gap-2 rounded-md border border-vscode-border/60 bg-vscode-card px-3 py-1.5 text-sm hover:bg-vscode-card/70">Copy</button>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <p class="mt-6 text-sm text-gray-400">
+        On first login, registration with <b>email</b> and <b>email verification</b> is required.
+      </p>
+    </div>
+  </section>
+
+  <!-- CLI -->
+  <section id="cli" class="border-t border-vscode-border/40">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <h2 class="text-2xl font-semibold">CLI Usage</h2>
+
+      <pre class="mt-4 overflow-x-auto rounded-xl border border-vscode-border/50 bg-black/50 p-5 text-sm leading-6"><code>tenx serve [-d|--detach]   # Start the server (use -d to run in background)
+tenx stop                  # Stop the background server
+tenx status                # Check if the server is running
+tenx set-secret &lt;KEY&gt;      # Update the API secret
+tenx get-secret            # Show the current API secret
+tenx set-license &lt;TOKEN&gt;   # Set the license token (auto-verifies)
+tenx get-license           # Show the current license token
+tenx verify-license        # Verify and store license manually
+tenx get-version           # Show current application version</code></pre>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-vscode-border/40">
+    <div class="mx-auto max-w-7xl px-4 py-10 text-sm text-gray-400">
+      <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; <span id="y"></span> 10xdev</p>
+        <p>
+          File names: <code class="text-gray-300">tenx-mac</code> ·
+          <code class="text-gray-300">tenx-linux</code> ·
+          <code class="text-gray-300">tenx.exe</code>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Small helpers -->
+  <script>
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // copy buttons
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if (!el) return;
+        const text = el.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          const old = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = old, 1200);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
