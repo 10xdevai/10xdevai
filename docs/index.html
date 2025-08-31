@@ -8,7 +8,6 @@
   <meta name="theme-color" content="#0f172a">
 
   <!-- Favicon / tab icon -->
-  <!-- Uses your existing logo (PNG). You can swap to .ico if you add one later. -->
   <link rel="icon" href="assets/logo.png" type="image/png" sizes="any">
   <link rel="apple-touch-icon" href="assets/logo.png">
   <link rel="shortcut icon" href="assets/logo.png" type="image/png">
@@ -22,12 +21,12 @@
         extend: {
           colors: {
             vscode: {
-              bg: '#0f172a',       // slate-900-ish
-              panel: '#111827',    // gray-900
-              card: '#1f2937',     // gray-800
-              border: '#374151',   // gray-700
-              accent: '#007acc',   // VS Code blue
-              accent2: '#60a5fa'   // softer blue
+              bg: '#0f172a',
+              panel: '#111827',
+              card: '#1f2937',
+              border: '#374151',
+              accent: '#007acc',
+              accent2: '#60a5fa'
             }
           },
           boxShadow: {
@@ -62,6 +61,8 @@
 
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="#features" class="hover:text-white/90">Features</a>
+        <!-- NEW: Tutorials link -->
+        <a href="#tutorials" class="hover:text-white/90">Tutorials</a>
         <a href="#install" class="hover:text-white/90">Install</a>
         <a href="#cli" class="hover:text-white/90">CLI</a>
         <a class="inline-flex items-center gap-2 rounded-md bg-vscode-accent px-3 py-1.5 text-sm font-medium text-white shadow-vscode hover:bg-vscode-accent/90"
@@ -118,7 +119,6 @@
       <h2 class="text-2xl font-semibold">Product Benefits</h2>
       <p class="mt-2 text-gray-300">Close the gap between browser-based LLM chat and your local file system.</p>
 
-      <!-- Nicer cards: gradient border, hover lift, subtle glow, icons -->
       <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         <!-- Card -->
         <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
@@ -161,6 +161,94 @@
             </div>
             <h3 class="font-semibold">Prompt snippets</h3>
             <p class="mt-2 text-gray-300">Pre-define reusable snippets to speed up common flows.</p>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Tutorials -->
+  <section id="tutorials" class="border-t border-vscode-border/40 bg-gradient-to-b from-transparent to-black/10 scroll-mt-20">
+    <div class="mx-auto max-w-7xl px-4 py-14">
+      <div class="flex items-center justify-between gap-4">
+        <h2 class="text-2xl font-semibold">Tutorials</h2>
+        <p class="text-sm text-gray-400">Short videos: watch and follow along.</p>
+      </div>
+
+      <!-- grid of video cards -->
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <!-- 1. Add file to prompt -->
+        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+          <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
+            <h3 class="font-semibold">Add File to Prompt</h3>
+            <p class="mt-1 text-sm text-gray-400">Attach local files to ground your chat.</p>
+            <div class="mt-3 overflow-hidden rounded-lg ring-1 ring-vscode-border/50">
+              <video class="w-full" controls preload="metadata" >
+                <source src="assets/tutorials/insert-file.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
+        </article>
+
+        <!-- 2. Open explorer -->
+        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+          <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
+            <h3 class="font-semibold">Open Explorer</h3>
+            <p class="mt-1 text-sm text-gray-400">Browse your workspace from the browser.</p>
+            <div class="mt-3 overflow-hidden rounded-lg ring-1 ring-vscode-border/50">
+              <video class="w-full" controls preload="metadata"">
+                <source src="assets/tutorials/open-explorer.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
+        </article>
+
+        <!-- 3. Show diff -->
+        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+          <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
+            <h3 class="font-semibold">Show Diff</h3>
+            <p class="mt-1 text-sm text-gray-400">Compare generated changes with your file.</p>
+            <div class="mt-3 overflow-hidden rounded-lg ring-1 ring-vscode-border/50">
+              <video class="w-full" controls preload="metadata" >
+                <source src="assets/tutorials/show-diff.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
+        </article>
+
+        <!-- 4. Merge diff -->
+        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+          <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
+            <h3 class="font-semibold">Merge Diff</h3>
+            <p class="mt-1 text-sm text-gray-400">Apply selected changes back to your FS.</p>
+            <div class="mt-3 overflow-hidden rounded-lg ring-1 ring-vscode-border/50">
+              <video class="w-full" controls preload="metadata" >
+                <source src="assets/tutorials/merge-diff.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+          <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
+        </article>
+
+        <!-- 5. View history -->
+        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent sm:col-span-2 lg:col-span-1">
+          <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
+            <h3 class="font-semibold">View History</h3>
+            <p class="mt-1 text-sm text-gray-400">Review past changes and restore if needed.</p>
+            <div class="mt-3 overflow-hidden rounded-lg ring-1 ring-vscode-border/50">
+              <video class="w-full" controls preload="metadata">
+                <source src="assets/tutorials/view-history.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
           <div class="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-white/5"></div>
         </article>
