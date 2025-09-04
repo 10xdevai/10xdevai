@@ -90,16 +90,54 @@
             mask secrets, and move faster with predefined prompt snippets.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-3">
-            <a href="#install" class="inline-flex items-center justify-center rounded-md bg-vscode-accent px-4 py-2.5 font-medium text-white hover:bg-vscode-accent/90 shadow-vscode">
-              Get Started
-            </a>
-            <a href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
-               target="_blank" rel="noopener"
-               class="inline-flex items-center justify-center rounded-md border border-vscode-border/60 bg-vscode-panel px-4 py-2.5 font-medium text-gray-200 hover:bg-vscode-card/60">
-              Install Chrome Plugin
-            </a>
+          <!-- NEW: Clear two-part notification -->
+          <div class="mt-5 rounded-xl border border-vscode-accent/30 bg-vscode-card/60 p-4 ring-1 ring-vscode-accent/20">
+            <div class="flex items-start gap-3">
+              <span class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-vscode-accent/20 ring-1 ring-vscode-accent/40">
+                <!-- info icon -->
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10
+                           10-4.48 10-10S17.52 2 12 2Z"/>
+                </svg>
+              </span>
+              <div class="text-sm">
+                <p class="font-medium text-white">10xDevAi has <b>two parts</b> you use together:</p>
+                <ul class="mt-1 list-disc pl-5 space-y-1 text-gray-300">
+                  <li>
+                    <b>Chrome Extension</b> – runs in your browser chat.
+                    <a class="text-vscode-accent hover:underline"
+                       href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
+                       target="_blank" rel="noopener">Install the extension</a>.
+                  </li>
+                  <li>
+                    <b>CLI (Local server)</b> – bridges the browser to your file system.
+                    See <a class="text-vscode-accent hover:underline" href="#install">CLI installation</a> and
+                    <a class="text-vscode-accent hover:underline" href="#cli">CLI usage</a>.
+                  </li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-3">
+                  <!-- LARGER PRIMARY BUTTON -->
+                  <a href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
+                     target="_blank" rel="noopener"
+                     class="inline-flex items-center rounded-lg bg-vscode-accent px-5 py-2.5 text-sm md:text-base font-semibold text-white hover:bg-vscode-accent/90 shadow-vscode">
+                    Install Extension
+                  </a>
+                  <!-- LARGER SECONDARY BUTTONS -->
+                  <a href="#install"
+                     class="inline-flex items-center rounded-lg border border-vscode-border/60 bg-vscode-panel px-5 py-2.5 text-sm md:text-base font-semibold hover:bg-vscode-card/60">
+                    Install CLI
+                  </a>
+                  <a href="#cli"
+                     class="inline-flex items-center rounded-lg border border-vscode-border/60 bg-vscode-panel px-5 py-2.5 text-sm md:text-base font-semibold hover:bg-vscode-card/60">
+                    CLI Commands
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Removed the old hero CTA buttons -->
+          <!-- (Previously: "Get Started" and "Install Chrome Plugin") -->
         </div>
 
         <div class="rounded-xl border border-vscode-border/60 bg-vscode-panel p-3 shadow-xl">
