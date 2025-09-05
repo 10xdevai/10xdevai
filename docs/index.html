@@ -61,7 +61,6 @@
 
       <nav class="hidden md:flex items-center gap-6 text-sm">
         <a href="#features" class="hover:text-white/90">Features</a>
-        <!-- NEW: Tutorials link -->
         <a href="#tutorials" class="hover:text-white/90">Tutorials</a>
         <a href="#install" class="hover:text-white/90">Install</a>
         <a href="#cli" class="hover:text-white/90">CLI</a>
@@ -90,11 +89,10 @@
             mask secrets, and move faster with predefined prompt snippets.
           </p>
 
-          <!-- NEW: Clear two-part notification -->
+          <!-- Two-part notification -->
           <div class="mt-5 rounded-xl border border-vscode-accent/30 bg-vscode-card/60 p-4 ring-1 ring-vscode-accent/20">
             <div class="flex items-start gap-3">
               <span class="inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-vscode-accent/20 ring-1 ring-vscode-accent/40">
-                <!-- info icon -->
                 <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
                   <path d="M11 7h2v2h-2V7Zm0 4h2v6h-2v-6Zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10
                            10-4.48 10-10S17.52 2 12 2Z"/>
@@ -116,13 +114,11 @@
                   </li>
                 </ul>
                 <div class="mt-3 flex flex-wrap gap-3">
-                  <!-- LARGER PRIMARY BUTTON -->
                   <a href="https://chromewebstore.google.com/detail/10xdevai/chiamapkmadbnnfgkkipkeojnfofjfba"
                      target="_blank" rel="noopener"
                      class="inline-flex items-center rounded-lg bg-vscode-accent px-5 py-2.5 text-sm md:text-base font-semibold text-white hover:bg-vscode-accent/90 shadow-vscode">
                     Install Extension
                   </a>
-                  <!-- LARGER SECONDARY BUTTONS -->
                   <a href="#install"
                      class="inline-flex items-center rounded-lg border border-vscode-border/60 bg-vscode-panel px-5 py-2.5 text-sm md:text-base font-semibold hover:bg-vscode-card/60">
                     Install CLI
@@ -135,13 +131,9 @@
               </div>
             </div>
           </div>
-
-          <!-- Removed the old hero CTA buttons -->
-          <!-- (Previously: "Get Started" and "Install Chrome Plugin") -->
         </div>
 
         <div class="rounded-xl border border-vscode-border/60 bg-vscode-panel p-3 shadow-xl">
-          <!-- Demo Video -->
           <video class="w-full rounded-lg ring-1 ring-vscode-border/60" controls poster="">
             <source src="assets/10xDev.mp4" type="video/mp4">
             Your browser does not support the video tag.
@@ -206,18 +198,46 @@
     </div>
   </section>
 
-  <!-- NEW: Tutorials -->
+  <!-- Tutorials -->
   <section id="tutorials" class="border-t border-vscode-border/40 bg-gradient-to-b from-transparent to-black/10 scroll-mt-20">
     <div class="mx-auto max-w-7xl px-4 py-14">
       <div class="flex items-center justify-between gap-4">
-        <h2 class="text-2xl font-semibold">Tutorials</h2>
-        <p class="text-sm text-gray-400">Short videos: watch and follow along.</p>
+        <div>
+          <h2 class="text-2xl font-semibold">Tutorials</h2>
+          <p class="text-sm text-gray-400">Short videos: watch and follow along.</p>
+        </div>
+        <!-- Toggle -->
+        <button id="tutorial-toggle"
+                class="rounded-md border border-vscode-border/60 bg-vscode-panel px-3 py-1.5 text-sm hover:bg-vscode-card/60"
+                type="button" aria-expanded="false" aria-controls="tutorial-grid">
+          Show all
+        </button>
       </div>
 
+      <!-- Subjects index (links jump to cards; auto-expands if needed) -->
+      <nav aria-label="Tutorial subjects" class="mt-4">
+        <ul class="flex flex-wrap gap-2">
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-insert-file" data-tjump="tutorial-insert-file">Add File to Prompt</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-open-explorer" data-tjump="tutorial-open-explorer">Open Explorer</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-show-diff" data-tjump="tutorial-show-diff">Show Diff</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-merge-diff" data-tjump="tutorial-merge-diff">Merge Diff</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-view-history" data-tjump="tutorial-view-history">View History</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-enable-llm-domains" data-tjump="tutorial-enable-llm-domains">Enable on More LLM Domains</a></li>
+          <li><a class="inline-flex items-center rounded-full border border-vscode-border/60 bg-vscode-panel px-3 py-1 text-xs hover:bg-vscode-card/60"
+                 href="#tutorial-change-password" data-tjump="tutorial-change-password">Change Password</a></li>
+        </ul>
+      </nav>
+
       <!-- grid of video cards -->
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div id="tutorial-grid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <!-- 1. Add file to prompt -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-insert-file" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Add File to Prompt</h3>
             <p class="mt-1 text-sm text-gray-400">Attach local files to ground your chat.</p>
@@ -232,7 +252,7 @@
         </article>
 
         <!-- 2. Open explorer -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-open-explorer" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Open Explorer</h3>
             <p class="mt-1 text-sm text-gray-400">Browse your workspace from the browser.</p>
@@ -247,7 +267,7 @@
         </article>
 
         <!-- 3. Show diff -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-show-diff" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Show Diff</h3>
             <p class="mt-1 text-sm text-gray-400">Compare generated changes with your file.</p>
@@ -262,7 +282,7 @@
         </article>
 
         <!-- 4. Merge diff -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-merge-diff" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent hidden">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Merge Diff</h3>
             <p class="mt-1 text-sm text-gray-400">Apply selected changes back to your FS.</p>
@@ -277,7 +297,7 @@
         </article>
 
         <!-- 5. View history -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent sm:col-span-2 lg:col-span-1">
+        <article id="tutorial-view-history" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent hidden">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">View History</h3>
             <p class="mt-1 text-sm text-gray-400">Review past changes and restore if needed.</p>
@@ -292,7 +312,7 @@
         </article>
 
         <!-- 6. Enable on more domains -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-enable-llm-domains" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent hidden">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Enable on More LLM Domains</h3>
             <p class="mt-1 text-sm text-gray-400">Grant site access so the plugin works on all your chat sites.</p>
@@ -307,7 +327,7 @@
         </article>
 
         <!-- 7. Change Password (NEW) -->
-        <article class="group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent">
+        <article id="tutorial-change-password" data-tutorial-card class="scroll-mt-24 group relative rounded-2xl p-[1px] bg-gradient-to-br from-vscode-accent/40 via-white/10 to-transparent hidden">
           <div class="h-full rounded-2xl border border-vscode-border/60 bg-vscode-panel p-4 shadow-card transition-all duration-300 group-hover:shadow-vscode group-hover:-translate-y-1">
             <h3 class="font-semibold">Change Password</h3>
             <p class="mt-1 text-sm text-gray-400">Update your account password securely.</p>
@@ -351,9 +371,7 @@
               </a>
             </li>
             <li>Click <b>Add to Chrome</b> → <b>Add extension</b>.</li>
-            <li>
-              (Optional) <b>Pin the extension</b>: click the puzzle icon in the toolbar, then the pin next to <i>10xDevAi</i>.
-            </li>
+            <li>(Optional) <b>Pin the extension</b> via the puzzle icon.</li>
             <li>Click the extension icon and <b>Log in</b>. On first login, you’ll complete <b>email registration & verification</b>.</li>
             <li>With the plugin active, you can: insert files as context, compare & save results back to FS, and use snippets.</li>
           </ol>
@@ -486,6 +504,58 @@ tenx get-version           # Show current application version</code></pre>
         });
       });
     });
+
+    // Tutorials: show only first 3 by default, toggle the rest, and support subject jumps
+    (function () {
+      const grid = document.getElementById('tutorial-grid');
+      const cards = Array.from(grid.querySelectorAll('[data-tutorial-card]'));
+      const toggleBtn = document.getElementById('tutorial-toggle');
+      const DEFAULT_VISIBLE = 3;
+
+      function setExpanded(expanded) {
+        cards.forEach((card, idx) => {
+          if (idx >= DEFAULT_VISIBLE) {
+            card.classList.toggle('hidden', !expanded);
+          }
+        });
+        toggleBtn.setAttribute('aria-expanded', String(expanded));
+        const hiddenCount = Math.max(cards.length - DEFAULT_VISIBLE, 0);
+        toggleBtn.textContent = expanded ? 'Show less' : (hiddenCount ? `Show all (${hiddenCount})` : 'Show all');
+      }
+
+      // initial state
+      setExpanded(false);
+
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        setExpanded(!expanded);
+      });
+
+      // subject index links (auto-expand then jump)
+      document.querySelectorAll('[data-tjump]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('data-tjump');
+          const target = document.getElementById(id);
+          if (!target) return;
+          const isHidden = target.classList.contains('hidden');
+          if (isHidden) setExpanded(true);
+          // allow browser to update layout if we just expanded
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, isHidden ? 50 : 0);
+        });
+      });
+
+      // If page loads with a hash pointing to a hidden card, expand & scroll
+      window.addEventListener('load', () => {
+        const hash = location.hash && location.hash.slice(1);
+        const target = hash ? document.getElementById(hash) : null;
+        if (target && target.hasAttribute('data-tutorial-card') && target.classList.contains('hidden')) {
+          setExpanded(true);
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
